@@ -3,15 +3,24 @@
         {% if title %}
         <title>{{ title }} - microblog</title>
         {% else %}
-        <title>fffffffffffffffffffffffffffffffffffffffffffff</title>
+        <title>bruh u forgot a title</title>
         {% endif %}
     </head>
     <body>
         <div>microblog: 
-            <a href="/index">Home</a>
-            <a href="/login">Login</a>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
         </div> 
         <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </body>
 </html>
@@ -22,4 +31,6 @@
     <div> is a division or section in an HTML
     <hr> (horizontal rule) is a tag that defines a themetic break 
     or horizontal rule 
+    <ul> unordered list
+    <li> a list item
 -->
